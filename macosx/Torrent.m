@@ -1595,6 +1595,15 @@ void completenessChangeCallback(tr_torrent * torrent, tr_completeness status, vo
     return priorities;
 }
 
+- (void) validateFilesWithIndexes: (NSIndexSet *) indexSet
+{
+	for (NSInteger index = [indexSet firstIndex]; index != NSNotFound; index = [indexSet indexGreaterThanIndex: index])
+		tr_torrentSetFileChecked(fHandle, index, 0);
+
+	tr_torrentVerifyUnchecked(fHandle);
+	[self update];
+}
+
 - (NSDate *) dateAdded
 {
     time_t date = fStat->addedDate;

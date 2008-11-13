@@ -281,6 +281,17 @@ typedef enum
             [[fOutline itemAtRow: i] fullPath]] inFileViewerRootedAtPath: nil];
 }
 
+- (void) validateFile: (id) sender
+{
+	NSIndexSet * indexSet = [fOutline selectedRowIndexes];
+    NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
+    for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
+        [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+
+	[fTorrent validateFilesWithIndexes: itemIndexes];
+	[fOutline reloadData];
+}
+
 #warning make real view controller (Leopard-only) so that Command-R will work
 - (BOOL) validateMenuItem: (NSMenuItem *) menuItem
 {
@@ -440,6 +451,13 @@ typedef enum
     
     [menu addItem: [NSMenuItem separatorItem]];
     
+	// Validate selected file
+	item = [[NSMenuItem alloc] initWithTitle: NSLocalizedString(@"Validate file", "Validate a file")
+									  action:@selector(validateFile:) keyEquivalent: @""];
+	[item setTarget: self];
+	[menu addItem: item];
+	[item release];
+
     //reveal in finder
     item = [[NSMenuItem alloc] initWithTitle: NSLocalizedString(@"Reveal in Finder", "File Outline -> Menu")
             action: @selector(revealFile:) keyEquivalent: @""];

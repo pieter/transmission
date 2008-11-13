@@ -1117,6 +1117,8 @@ void tr_torrentAmountFinished( const tr_torrent  * torrent,
                                int                 size );
 
 void tr_torrentVerify( tr_torrent * torrent );
+void tr_torrentVerifyUnchecked( tr_torrent * tor );
+
 
 /***********************************************************************
  * tr_info

@@ -251,6 +251,8 @@ typedef enum
 - (BOOL) hasFilePriority: (NSInteger) priority forIndexes: (NSIndexSet *) indexSet;
 - (NSSet *) filePrioritiesForIndexes: (NSIndexSet *) indexSet;
 
+- (void) validateFilesWithIndexes: (NSIndexSet *) indexSet;
+
 - (NSDate *) dateAdded;
 - (NSDate *) dateCompleted;
 - (NSDate *) dateActivity;
