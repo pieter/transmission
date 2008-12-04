@@ -155,6 +155,10 @@
 {
     return fMouseRow;
 }
+- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
+{
+	return NSDragOperationGeneric;
+}
 
 - (void) mouseEntered: (NSEvent *) event
 {

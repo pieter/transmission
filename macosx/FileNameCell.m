@@ -156,6 +156,8 @@
     NSAttributedString * statusString = [self attributedStatusWithColor: specialColor ? specialColor : [NSColor darkGrayColor]];
     NSRect statusRect = [self rectForStatusWithString: statusString withTitleRect: titleRect inBounds: cellFrame];
     [statusString drawInRect: statusRect];
+
+	[self setStringValue:@"Heheh"];
 }
 
 @end
