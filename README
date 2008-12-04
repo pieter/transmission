@@ -7,8 +7,7 @@ into the 'master' branch, or you can use the 'all' branch, which features
 all patches.
 
 Before you can start using the clone, you need to run the 'init.sh' script in
-this repository. It will take care of setting up git-svn and the submodule for
-you.
+this repository. It will take care of setting up git-svn remotes for you.
 
 Below is the README of Transmission itself.
 
