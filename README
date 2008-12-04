@@ -1,3 +1,17 @@
+README for the Transmission git-svn clone
+
+This is a collection of patches that didn't make it into the official
+Transmission source, but were still deemed useful by some would-be
+contributors. You can choose to pick some of the changes, and merge them
+into the 'master' branch, or you can use the 'all' branch, which features
+all patches.
+
+Before you can start using the clone, you need to run the 'init.sh' script in
+this repository. It will take care of setting up git-svn and the submodule for
+you.
+
+Below is the README of Transmission itself.
+
 README for Transmission
 =======================
 
