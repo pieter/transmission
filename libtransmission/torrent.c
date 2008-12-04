@@ -1176,6 +1176,18 @@ tr_torrentVerify( tr_torrent * tor )
     tr_globalUnlock( tor->session );
 }
 
+void
+tr_torrentVerifyUnchecked( tr_torrent * tor )
+{
+    tr_verifyRemove( tor );
+
+    tr_globalLock( tor->session );
+
+    tr_verifyAdd( tor, torrentRecheckDoneCB );
+
+    tr_globalUnlock( tor->session );
+}
+
 static void
 stopTorrent( void * vtor )
 {
