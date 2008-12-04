@@ -219,6 +219,20 @@ typedef enum
         return [outlineView rowHeight];
 }
 
+- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
+{
+	NSMutableArray *filePaths = [NSMutableArray array];
+	NSString * folder = [fTorrent downloadFolder];
+	int i;
+
+    for (i = 0; i < [items count]; ++i)
+		[filePaths addObject:[folder stringByAppendingPathComponent:[(FileListNode *)[items objectAtIndex:i] fullPath]]];
+
+	[pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
+	[pboard setPropertyList:filePaths forType:NSFilenamesPboardType];
+	return YES;
+}
+
 - (void) setCheck: (id) sender
 {
     NSInteger state = [sender tag] == FILE_UNCHECK_TAG ? NSOffState : NSOnState;
